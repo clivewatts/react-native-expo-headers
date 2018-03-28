@@ -1,0 +1,105 @@
+import React, { Component } from "react";
+import { Animated, StatusBar, Dimensions, StyleSheet, Text, View, TouchableOpacity, Modal } from "react-native";
+import PropTypes from "prop-types";
+import { material } from "react-native-typography";
+import { Ionicons } from "@expo/vector-icons";
+import Menu from "./Menu";
+
+const HEADER_HEIGHT = 56;
+const APP_BAR_ELEVATION = 4;
+
+const BUTTON_SHAPE = {
+  icon: PropTypes.node.isRequired,
+  onPress: PropTypes.func.isRequired
+};
+
+export default class SimpleHeader extends Component {
+  static propTypes = {
+    title: PropTypes.string.isRequired,
+    color: PropTypes.string,
+    backgroundColor: PropTypes.string,
+    leftButton: PropTypes.shape(BUTTON_SHAPE),
+    rightButtons: PropTypes.arrayOf(PropTypes.shape({
+      ...BUTTON_SHAPE,
+      title: PropTypes.string,
+      showAsAction: PropTypes.bool.isRequired
+    }))
+  };
+
+  static defaultProps = {
+    rightButtons: []
+  };
+
+  state = {
+    menuVisible: false,
+    position: { x: 0, y: 0 }
+  };
+
+  showMenu = position => this.setState({ position, menuVisible: true });
+
+  hideMenu = () => this.setState({ menuVisible: false });
+
+  render = () => {
+    const { title, color, backgroundColor, leftButton, rightButtons } = this.props;
+    const { menuVisible, position } = this.state;
+
+    return (
+      <View style={[styles.header, { backgroundColor }]}>
+        <StatusBar
+          barStyle="light-content"
+          backgroundColor={backgroundColor} />
+
+        <View style={styles.iconContainer}>
+          {leftButton ?
+            <TouchableOpacity onPress={leftButton.onPress}>
+              {leftButton.icon}
+            </TouchableOpacity>
+            : null}
+        </View>
+
+        <Text style={[material.title, { color: color, flexGrow: 1 }]}>{title}</Text>
+
+        <View style={styles.iconContainer}>
+          {rightButtons.map(btn => btn.showAsAction === "ifRoom" ?
+            <TouchableOpacity onPress={btn.onPress}>
+              {btn.icon}
+            </TouchableOpacity> : null)}
+
+          {rightButtons.filter(btn => btn.showAsAction === "never").length > 0 ? 
+            <TouchableOpacity onPress={e => this.showMenu({ x: e.nativeEvent.pageX, y: e.nativeEvent.pageY })}>
+              <Ionicons style={styles.icon} name="md-more" size={28} color={color} />
+            </TouchableOpacity> : null}
+        </View>
+
+        <Menu visible={menuVisible}
+              position={position} 
+              items={rightButtons.filter(btn => btn.showAsAction === "never")}
+              onRequestClose={this.hideMenu} />
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  header: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    height: HEADER_HEIGHT,
+    elevation: APP_BAR_ELEVATION,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between"
+  },
+  iconContainer: {
+    marginHorizontal: 8,
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center"
+  },
+  icon: {
+    padding: 8,
+    marginRight: 8
+  }
+});
