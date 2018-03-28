@@ -60,8 +60,8 @@ const { scrollY } = this.state;
                 leftButton={{ icon: <Ionicons name="md-menu" size={28} color="#FFFFFF" />, onPress: () => console.log('Menu') }}
                 rightButtons={[{ icon: <Ionicons name="md-funnel" size={28} color="#FFFFFF" />, onPress: () => console.log("Filter"), showAsAction: 'ifRoom' },
                               { icon: <Ionicons name="md-share" size={28} color="#FFFFFF" />, onPress: () => console.log("Share!"), showAsAction: 'ifRoom' },
-                              { icon: <Ionicons name="md-beer" size={28} color="#000000" />, title: 'Give the man a beer!', onPress: () => console.log('Sure! He will get his beer!'), showAsAction: 'never' },
-                              { icon: <Ionicons name="md-bowtie" size={28} color="#000000" />, title: 'Bowtie?', onPress: () => console.log('Bowties are cool!'), showAsAction: 'never' }]} /> : null}
+                              { icon: <Ionicons name="md-beer" size={24} color="#000000" />, title: 'Give the man a beer!', onPress: () => console.log('Sure! He will get his beer!'), showAsAction: 'never' },
+                              { icon: <Ionicons name="md-bowtie" size={24} color="#000000" />, title: 'Bowtie?', onPress: () => console.log('Bowties are cool!'), showAsAction: 'never' }]} /> : null}
 ```
 
 For `zIndex` is not supported on Android, always position Android headers below all the rest of the Component code in order for it to show on top of it all.
