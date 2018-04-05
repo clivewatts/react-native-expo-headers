@@ -73,12 +73,12 @@ export default class Header extends Component {
           {leftButton ? 
             <TouchableOpacity style={styles.btn} onPress={leftButton.onPress}>
               {leftButton.icon}
-            </TouchableOpacity> : <View></View>}
+            </TouchableOpacity> : <View />}
           
           {rightButton ? 
             <TouchableOpacity style={styles.btn} onPress={rightButton.onPress}>
               {rightButton.icon}
-            </TouchableOpacity> : <View></View>}
+            </TouchableOpacity> : <View />}
         </SafeAreaView>
         <Animated.View style={[styles.bar, { transform: [{ scale: titleScale }, { translateX: titleTranslateX }, { translateY: titleTranslateY }] }]}>
           <SafeAreaView>
