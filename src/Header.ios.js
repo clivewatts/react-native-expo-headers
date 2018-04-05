@@ -71,12 +71,12 @@ export default class Header extends Component {
           ]}/>
         <SafeAreaView style={styles.btnContainer}>
           {leftButton ? 
-            <TouchableOpacity onPress={leftButton.onPress}>
+            <TouchableOpacity style={styles.btn} onPress={leftButton.onPress}>
               {leftButton.icon}
             </TouchableOpacity> : <View></View>}
           
           {rightButton ? 
-            <TouchableOpacity onPress={rightButton.onPress}>
+            <TouchableOpacity style={styles.btn} onPress={rightButton.onPress}>
               {rightButton.icon}
             </TouchableOpacity> : <View></View>}
         </SafeAreaView>

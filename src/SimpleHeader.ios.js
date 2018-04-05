@@ -19,14 +19,14 @@ const Header = ({ title, color, backgroundColor, rightButton, leftButton }) => (
       backgroundColor="rgba(0, 0, 0, 0.251)" />
 
     {leftButton ? 
-      <TouchableOpacity onPress={leftButton.onPress}>
+      <TouchableOpacity style={styles.btn} onPress={leftButton.onPress}>
         {leftButton.icon}
       </TouchableOpacity> : null}
 
     <Text style={[human.title3, { color }]}>{title}</Text>
 
     {rightButton ? 
-      <TouchableOpacity onPress={rightButton.onPress}>
+      <TouchableOpacity style={styles.btn} onPress={rightButton.onPress}>
         {rightButton.icon}
       </TouchableOpacity> : null}
   </SafeAreaView>

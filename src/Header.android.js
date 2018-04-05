@@ -103,7 +103,7 @@ export default class Header extends Component {
           <Animated.View style={[styles.iconBar, { transform: [{ translateY: iconBarTranslate }] }]}>
             <View style={styles.iconContainer}>
               {leftButton ?
-                <TouchableOpacity onPress={leftButton.onPress}>
+                <TouchableOpacity style={styles.btn} onPress={leftButton.onPress}>
                   {leftButton.icon}
                 </TouchableOpacity>
                 : null}
@@ -111,13 +111,13 @@ export default class Header extends Component {
 
             <View style={styles.iconContainer}>
               {rightButtons.map(btn => btn.showAsAction === "ifRoom" ?
-                <TouchableOpacity onPress={btn.onPress}>
+                <TouchableOpacity style={styles.btn} onPress={btn.onPress}>
                   {btn.icon}
                 </TouchableOpacity> : null)}
 
               {rightButtons.filter(btn => btn.showAsAction === "never").length > 0 ? 
-                <TouchableOpacity onPress={e => this.showMenu({ x: e.nativeEvent.pageX, y: e.nativeEvent.pageY })}>
-                  <Ionicons style={styles.icon} name="md-more" size={28} color={color} />
+                <TouchableOpacity style={styles.btn} onPress={e => this.showMenu({ x: e.nativeEvent.pageX, y: e.nativeEvent.pageY })}>
+                  <Ionicons name="md-more" size={28} color={color} />
                 </TouchableOpacity> : null}
             </View>
           </Animated.View>
@@ -186,9 +186,8 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center"
   },
-  icon: {
+  btn: {
     padding: 8,
-    marginRight: 8,
-    width: 38
+    marginHorizontal: 8
   }
 });
