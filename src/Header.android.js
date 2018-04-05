@@ -187,7 +187,6 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   btn: {
-    padding: 8,
-    marginHorizontal: 8
+    padding: 8
   }
 });

@@ -67,8 +67,6 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   btn: {
-    padding: 8,
-    marginLeft: 8,
-    marginRight: 8
+    padding: 8
   }
 });

@@ -121,9 +121,7 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   btn: {
-    padding: 8,
-    marginLeft: 8,
-    marginRight: 8
+    padding: 8
   },
   bar: {
     backgroundColor: "transparent",
