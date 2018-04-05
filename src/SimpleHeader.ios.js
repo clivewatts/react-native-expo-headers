@@ -23,9 +23,7 @@ const Header = ({ title, color, backgroundColor, rightButton, leftButton }) => (
         {leftButton.icon}
       </TouchableOpacity> : <View />}
 
-    <View style={styles.titleContainer}>
-      <Text style={[human.title3, { color }]}>{title}</Text>
-    </View>
+    <Text style={[styles.title, human.title3, { color }]}>{title}</Text>
 
     {rightButton ? 
       <TouchableOpacity style={styles.btn} onPress={rightButton.onPress}>
@@ -60,7 +58,7 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
     height: HEADER_HEIGHT
   },
-  titleContainer: {
+  title: {
     position: "absolute",
     bottom: 0,
     right: 0,
