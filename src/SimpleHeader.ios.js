@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   btn: {
+    zIndex: 4,
     padding: 8,
     marginHorizontal: 8
   }
