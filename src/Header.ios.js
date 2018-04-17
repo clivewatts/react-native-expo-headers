@@ -24,6 +24,10 @@ export default class Header extends Component {
     rightButton: PropTypes.shape(BUTTON_SHAPE)
   };
 
+  static defaultProps = {
+    backgroundColor: "#E8E8E8",
+  };
+
   state = {
     horizontalTitleOffset: 56
   };
@@ -57,7 +61,7 @@ export default class Header extends Component {
     });
 
     return (
-      <View style={styles.conatiner}>
+      <View style={[styles.container, { backgroundColor }]}>
         <StatusBar
           translucent
           barStyle="dark-content"
@@ -67,7 +71,7 @@ export default class Header extends Component {
           style={[
             styles.header,
             { transform: [{ translateY: headerTranslate }],
-              backgroundColor: backgroundColor || "#E8E8EF" },
+              backgroundColor },
           ]}/>
         <SafeAreaView style={styles.btnContainer}>
           {leftButton ? 
@@ -92,7 +96,7 @@ export default class Header extends Component {
 }
 
 const styles = StyleSheet.create({
-  conatiner: {
+  container: {
     flexDirection: "column", 
     justifyContent: "flex-start", 
     zIndex: 2, 
