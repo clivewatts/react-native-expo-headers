@@ -22,7 +22,7 @@ export default class SimpleHeader extends Component {
     rightButtons: PropTypes.arrayOf(PropTypes.shape({
       ...BUTTON_SHAPE,
       title: PropTypes.string,
-      showAsAction: PropTypes.bool.isRequired
+      showAsAction: PropTypes.string.isRequired
     }))
   };
 
