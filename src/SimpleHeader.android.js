@@ -104,6 +104,7 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     marginHorizontal: 8,
+    flexShrink: 1,
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "center"

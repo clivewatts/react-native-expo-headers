@@ -192,6 +192,7 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     marginLeft: 8,
+    flexShrink: 1,
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "center"

@@ -121,6 +121,7 @@ const styles = StyleSheet.create({
   container: {
     position: "absolute",
     elevation: 8,
+    flexShrink: 1,
     flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "flex-start",
