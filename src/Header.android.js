@@ -28,6 +28,7 @@ export default class Header extends Component {
     }),
     leftButton: PropTypes.shape(BUTTON_SHAPE),
     rightButtons: PropTypes.arrayOf(PropTypes.shape({
+      _id: PropTypes.string.isRequired,
       ...BUTTON_SHAPE,
       title: PropTypes.string,
       showAsAction: PropTypes.string.isRequired
@@ -110,10 +111,18 @@ export default class Header extends Component {
             </View>
 
             <View style={styles.iconContainer}>
-              {rightButtons.map(btn => btn.showAsAction === "ifRoom" ?
-                <TouchableOpacity style={styles.btn} onPress={btn.onPress}>
-                  {btn.icon}
-                </TouchableOpacity> : null)}
+            <FlatList
+              data={rightButtons.filter(btn => btn.showAsAction === 'ifRoom')}
+              renderItem={({ item }) => (
+                <TouchableOpacity style={styles.btn} onPress={item.onPress}>
+                  {item.icon}
+                </TouchableOpacity>
+              )}
+              keyExtractor={item => item._id}
+              horizontal
+              scrollEnabled={false}
+              showsHorizontalScrollIndicator={false}
+            />
 
               {rightButtons.filter(btn => btn.showAsAction === "never").length > 0 ? 
                 <TouchableOpacity style={styles.btn} onPress={e => this.showMenu({ x: e.nativeEvent.pageX, y: e.nativeEvent.pageY })}>

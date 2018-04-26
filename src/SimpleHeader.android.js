@@ -64,8 +64,8 @@ export default class SimpleHeader extends Component {
           <FlatList
             data={rightButtons.filter(btn => btn.showAsAction === 'ifRoom')}
             renderItem={({ item }) => (
-              <TouchableOpacity style={styles.btn} onPress={btn.onPress}>
-                {btn.icon}
+              <TouchableOpacity style={styles.btn} onPress={item.onPress}>
+                {item.icon}
               </TouchableOpacity>
             )}
             keyExtractor={item => item._id}
