@@ -110,20 +110,20 @@ export default class Header extends Component {
                 : null}
             </View>
 
-            <View style={styles.iconContainer}>
-            <FlatList
-              data={rightButtons.filter(btn => btn.showAsAction === 'ifRoom')}
-              renderItem={({ item }) => (
-                <TouchableOpacity style={styles.btn} onPress={item.onPress}>
-                  {item.icon}
-                </TouchableOpacity>
-              )}
-              keyExtractor={item => item._id}
-              horizontal
-              inverted
-              scrollEnabled={false}
-              showsHorizontalScrollIndicator={false}
-            />
+            <View style={[styles.iconContainer, { flexShrink: 1 }]}>
+              <FlatList
+                data={rightButtons.filter(btn => btn.showAsAction === 'ifRoom')}
+                renderItem={({ item }) => (
+                  <TouchableOpacity style={styles.btn} onPress={item.onPress}>
+                    {item.icon}
+                  </TouchableOpacity>
+                )}
+                keyExtractor={item => item._id}
+                horizontal
+                inverted
+                scrollEnabled={false}
+                showsHorizontalScrollIndicator={false}
+              />
 
               {rightButtons.filter(btn => btn.showAsAction === "never").length > 0 ? 
                 <TouchableOpacity style={styles.btn} onPress={e => this.showMenu({ x: e.nativeEvent.pageX, y: e.nativeEvent.pageY })}>
@@ -192,7 +192,6 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     marginLeft: 8,
-    flexShrink: 1,
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "center"

@@ -60,7 +60,7 @@ export default class SimpleHeader extends Component {
 
         <Text style={[material.title, { color: color, flexGrow: 1 }]}>{title}</Text>
 
-        <View style={styles.iconContainer}>
+        <View style={[styles.iconContainer, { flexShrink: 1 }]}>
           <FlatList
             data={rightButtons.filter(btn => btn.showAsAction === 'ifRoom')}
             renderItem={({ item }) => (
@@ -104,7 +104,6 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     marginHorizontal: 8,
-    flexShrink: 1,
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "center"
