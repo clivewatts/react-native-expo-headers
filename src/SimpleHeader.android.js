@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Animated, StatusBar, Dimensions, StyleSheet, Text, View, TouchableOpacity, Modal } from "react-native";
+import { Animated, StatusBar, Dimensions, StyleSheet, Text, View, FlatList, TouchableOpacity, Modal } from "react-native";
 import PropTypes from "prop-types";
 import { material } from "react-native-typography";
 import { Ionicons } from "@expo/vector-icons";
@@ -20,6 +20,7 @@ export default class SimpleHeader extends Component {
     backgroundColor: PropTypes.string,
     leftButton: PropTypes.shape(BUTTON_SHAPE),
     rightButtons: PropTypes.arrayOf(PropTypes.shape({
+      _id: PropTypes.string.isRequired,
       ...BUTTON_SHAPE,
       title: PropTypes.string,
       showAsAction: PropTypes.string.isRequired
@@ -60,10 +61,18 @@ export default class SimpleHeader extends Component {
         <Text style={[material.title, { color: color, flexGrow: 1 }]}>{title}</Text>
 
         <View style={styles.iconContainer}>
-          {rightButtons.map(btn => btn.showAsAction === "ifRoom" ?
-            <TouchableOpacity style={styles.btn} onPress={btn.onPress}>
-              {btn.icon}
-            </TouchableOpacity> : null)}
+          <FlatList
+            data={rightButtons.filter(btn => btn.showAsAction === 'ifRoom')}
+            renderItem={({ item }) => (
+              <TouchableOpacity style={styles.btn} onPress={btn.onPress}>
+                {btn.icon}
+              </TouchableOpacity>
+            )}
+            keyExtractor={item => item._id}
+            horizontal
+            scrollEnabled={false}
+            showsHorizontalScrollIndicator={false}
+          />
 
           {rightButtons.filter(btn => btn.showAsAction === "never").length > 0 ? 
             <TouchableOpacity style={styles.btn} onPress={e => this.showMenu({ x: e.nativeEvent.pageX, y: e.nativeEvent.pageY })}>

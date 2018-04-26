@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Animated, View, Modal, Text, TouchableOpacity, TouchableWithoutFeedback, StyleSheet } from "react-native";
+import { Animated, View, Modal, Text, FlatList, TouchableOpacity, TouchableWithoutFeedback, StyleSheet } from "react-native";
 import PropTypes from "prop-types";
 import { material } from "react-native-typography";
 import { Ionicons } from "@expo/vector-icons";
@@ -84,16 +84,23 @@ export default class Menu extends Component {
           <View style={styles.backCover}>
             <Animated.View onLayout={e => this.setOffset(e.nativeEvent.layout.width - 8)} 
                           style={[styles.container, { top: position.y + 5, left: position.x - offset }, animation]}>
-              {items.map(item => 
-                <TouchableOpacity onPress={() => this.hideMe(() => {
-                  item.onPress();
-                  onRequestClose();
-                })}>
-                  <View style={styles.listItem}>
-                    {item.icon}
-                    <Text style={[material.body1, { marginLeft: 8 }]}>{item.title}</Text>
-                  </View>
-                </TouchableOpacity>)}
+              <FlatList
+                data={items}
+                renderItem={({ item }) => (
+                  <TouchableOpacity onPress={() => this.hideMe(() => {
+                    item.onPress();
+                    onRequestClose();
+                  })}>
+                    <View style={styles.listItem}>
+                      {item.icon}
+                      <Text style={[material.body1, { marginLeft: 8 }]}>{item.title}</Text>
+                    </View>
+                  </TouchableOpacity>
+                )}
+                keyExtractor={item => item._id}
+                scrollEnabled={false}
+                showsVerticalScrollIndicator={false}
+              />
             </Animated.View>
           </View>
         </TouchableWithoutFeedback>
