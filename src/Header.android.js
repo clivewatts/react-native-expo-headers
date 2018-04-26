@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Animated, StatusBar, Dimensions, StyleSheet, Text, View, TouchableOpacity, Modal } from "react-native";
+import { Animated, StatusBar, Dimensions, StyleSheet, Text, View, FlatList, TouchableOpacity, Modal } from "react-native";
 import { Image } from "react-native-expo-image-cache";
 import { material } from "react-native-typography";
 import { Ionicons } from "@expo/vector-icons";
@@ -120,6 +120,7 @@ export default class Header extends Component {
               )}
               keyExtractor={item => item._id}
               horizontal
+              inverted
               scrollEnabled={false}
               showsHorizontalScrollIndicator={false}
             />

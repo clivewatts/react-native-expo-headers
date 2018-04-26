@@ -70,6 +70,7 @@ export default class SimpleHeader extends Component {
             )}
             keyExtractor={item => item._id}
             horizontal
+            inverted
             scrollEnabled={false}
             showsHorizontalScrollIndicator={false}
           />
