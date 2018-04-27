@@ -15,7 +15,7 @@ export default class Menu extends Component {
       icon: PropTypes.node.isRequired,
       onPress: PropTypes.func.isRequired,
       title: PropTypes.string.isRequired,
-      showAsAction: PropTypes.bool.isRequired
+      showAsAction: PropTypes.string.isRequired
     })).isRequired,
     onRequestClose: PropTypes.func.isRequired
   };
